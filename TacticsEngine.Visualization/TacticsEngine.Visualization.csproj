@@ -22,6 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Board\CaptainCoder.Tactics.Board.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Views\AboutWindow.axaml.cs">
       <DependentUpon>AboutWindow.axaml</DependentUpon>
     </Compile>

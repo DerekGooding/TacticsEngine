@@ -19,7 +19,58 @@
                 <MenuItem Header="_Exit" Click="Exit_Click"/>
             </MenuItem>
         </Menu>
-        <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock DockPanel.Dock="Top" Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontWeight="Bold" FontSize="24"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <DockPanel Grid.Column="0">
+                <TextBlock DockPanel.Dock="Top" Text="Classes"/>
+                <ListBox ItemsSource="{Binding ReflectionTypes}" SelectionMode="Single"
+                         SelectedItem="{Binding SelectedType}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <DockPanel Grid.Row="0">
+                    <TextBlock DockPanel.Dock="Top" Text="Methods"/>
+                    <ListBox ItemsSource="{Binding Methods}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+
+                <DockPanel Grid.Row="1">
+                    <TextBlock DockPanel.Dock="Top" Text="Fields"/>
+                    <ListBox ItemsSource="{Binding Fields}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+                
+            </Grid>
+
+            
+        </Grid>
     </DockPanel>
     
 </UserControl>
