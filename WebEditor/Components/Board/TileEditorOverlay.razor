@@ -32,7 +32,7 @@
     private void CheckClick(MouseEventArgs args)
     {
         Position position = args.ToPosition(Parent.CellSize);
-        if (args.CtrlKey)
+        if (ToolManager.Shared.Tool == TileTool.Shared == args.CtrlKey) // CtrlKey is now a modifier. If you're in erase mode, it makes you add and vice versa
         {
             Parent.Board.RemoveTile(position);
         }
@@ -48,7 +48,7 @@
         // We delay to let the JS event finish before changing state
         await Task.Delay(1);
         _start = args.ToPosition(Parent.CellSize);
-        _isErasing = args.CtrlKey;
+        _isErasing = ToolManager.Shared.Tool == TileTool.Shared == args.CtrlKey; // CtrlKey is now a modifier. If you're in erase mode, it makes you add and vice versa
     }
 
     private void CheckDragEnd(DragEventArgs args)
