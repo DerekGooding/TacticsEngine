@@ -13,6 +13,7 @@
         <button @onclick="@(() => SaveBoard())">Save File</button>
         <button @onclick="@(() => ToolManager.Tool = EraseTool.Shared)">Erase</button>
         <button @onclick="@(() => ToolManager.Tool = TileTool.Shared)">Add Tiles</button>
+        <button @onclick="@(() => NewBoard())">New Map</button>
         <span>
             W: <InputNumber @bind-Value="_width" /> H: <InputNumber @bind-Value="_height" />
         </span>
@@ -75,6 +76,8 @@
         var bytes = Encoding.UTF8.GetBytes(_board.ToJson());
         await BlazorDownloadFileService.DownloadFileAsync("Board.json", bytes, "application/json");
     }
+
+    private void NewBoard() => _board = new();
 
     protected override void OnInitialized()
     {
