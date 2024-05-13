@@ -1,3 +1,6 @@
+using Blazorise.Bootstrap;
+using Blazorise.Icons.FontAwesome;
+
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -5,6 +8,8 @@ using WebEditor.Components.DragAndDrop;
 using WebEditor.Tools;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
+builder.Services.AddBootstrapProviders().AddFontAwesomeIcons();
+
 builder.RootComponents.Add<WebEditor.App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
